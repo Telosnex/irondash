@@ -92,16 +92,46 @@ static char associatedObjectKey;
 
 + (NSView *)getFlutterView:(int64_t)engineHandle {
   _IrondashEngineContext *context = [registry objectForKey:@(engineHandle)];
+  if (context == nil) {
+    // Engine context may be missing if the engine was already destroyed, or
+    // (on macOS) if this is called before the dispatch_async block in
+    // registerWithRegistrar: has populated the registry. Returning nil lets
+    // callers surface an error instead of crashing on a nil ivar dereference
+    // (objc_loadWeakRetained on address 0x8).
+    NSLog(@"IrondashEngineContextPlugin: no context for engine handle %lld",
+          engineHandle);
+    return nil;
+  }
   return context->flutterView;
 }
 
 + (id<FlutterTextureRegistry>)getTextureRegistry:(int64_t)engineHandle {
   _IrondashEngineContext *context = [registry objectForKey:@(engineHandle)];
+  if (context == nil) {
+    // Engine context may be missing if the engine was already destroyed, or
+    // (on macOS) if this is called before the dispatch_async block in
+    // registerWithRegistrar: has populated the registry. Returning nil lets
+    // callers surface an error instead of crashing on a nil ivar dereference
+    // (objc_loadWeakRetained on address 0x8).
+    NSLog(@"IrondashEngineContextPlugin: no context for engine handle %lld",
+          engineHandle);
+    return nil;
+  }
   return context->textureRegistry;
 }
 
 + (id<FlutterBinaryMessenger>)getBinaryMessenger:(int64_t)engineHandle {
   _IrondashEngineContext *context = [registry objectForKey:@(engineHandle)];
+  if (context == nil) {
+    // Engine context may be missing if the engine was already destroyed, or
+    // (on macOS) if this is called before the dispatch_async block in
+    // registerWithRegistrar: has populated the registry. Returning nil lets
+    // callers surface an error instead of crashing on a nil ivar dereference
+    // (objc_loadWeakRetained on address 0x8).
+    NSLog(@"IrondashEngineContextPlugin: no context for engine handle %lld",
+          engineHandle);
+    return nil;
+  }
   return context->binaryMessenger;
 }
 
