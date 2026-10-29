@@ -61,6 +61,14 @@ jobs:
           if [[ "$RUNNER_OS" == Linux ]]; then run=(xvfb-run -a "${run[@]}"); fi
           "${run[@]}"
 
+  desktop-linux-arm64:
+    name: Linux ARM64
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 45
+    env:
+      DEVICE: linux
+    steps: *desktop_steps
+
   desktop-macos-arm64:
     name: macOS ARM64
     runs-on: macos-26
