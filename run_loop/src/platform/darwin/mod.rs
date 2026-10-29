@@ -77,7 +77,7 @@ impl State {
             .collect();
 
         StatePendingExecution {
-            callbacks: self.callbacks.drain(0..).collect(),
+            callbacks: std::mem::take(&mut self.callbacks),
             timers: pending
                 .iter()
                 .map(|h| self.timers.remove(h).unwrap())
