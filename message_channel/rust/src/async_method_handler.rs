@@ -20,6 +20,9 @@ impl<T: Into<Value>, E: Into<PlatformError>> IntoPlatformResult for Result<T, E>
     }
 }
 
+// async_trait adds #[must_use] to the methods, which clippy (newer stable)
+// reports as a double must_use on each of them.
+#[allow(clippy::double_must_use)]
 #[async_trait(?Send)]
 pub trait AsyncMethodHandler: Sized + 'static {
     async fn on_method_call(&self, call: MethodCall) -> PlatformResult;
