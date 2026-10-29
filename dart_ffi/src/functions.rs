@@ -62,6 +62,8 @@ impl DartFunctions {
 static FUNCTIONS: OnceCell<DartFunctions> = OnceCell::new();
 
 thread_local! {
+    // Clippy on Android flags this initializer, which is already const.
+    #[allow(clippy::missing_const_for_thread_local)]
     static FUNCTIONS_TL: RefCell<Option<DartFunctions>> = const { RefCell::new(None) };
 }
 

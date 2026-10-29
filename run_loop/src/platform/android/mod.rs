@@ -188,7 +188,7 @@ impl State {
     fn process_callbacks(&self) {
         let callbacks: Vec<SenderCallback> = {
             let mut callbacks = self.callbacks.lock().unwrap();
-            callbacks.callbacks.drain(0..).collect()
+            std::mem::take(&mut callbacks.callbacks)
         };
         for c in callbacks {
             c()
