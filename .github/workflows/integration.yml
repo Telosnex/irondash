@@ -40,7 +40,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq clang cmake ninja-build pkg-config libgtk-3-dev xvfb > /dev/null
-      - uses: Telosnex/telosnex_ci_tools/actions/setup-flutter@4a798518378fb0c362ebe42940227560e6b4ecde # v0.5.8
+      - uses: Telosnex/telosnex_ci_tools/actions/setup-flutter@46806695c593ec632eb26996046ea89649a1a6f7 # v0.5.9
       - name: Install rustfmt and clippy
         if: runner.os != 'Linux'
         run: rustup component add rustfmt clippy
@@ -105,14 +105,14 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: Telosnex/telosnex_ci_tools/actions/setup-flutter@4a798518378fb0c362ebe42940227560e6b4ecde # v0.5.8
+      - uses: Telosnex/telosnex_ci_tools/actions/setup-flutter@46806695c593ec632eb26996046ea89649a1a6f7 # v0.5.9
       - run: flutter pub get
         working-directory: engine_context/dart
       - run: flutter pub get
         working-directory: engine_context/dart/example
-      - uses: Telosnex/telosnex_ci_tools/actions/ios-simulator-boot@4a798518378fb0c362ebe42940227560e6b4ecde # v0.5.8
+      - uses: Telosnex/telosnex_ci_tools/actions/ios-simulator-boot@46806695c593ec632eb26996046ea89649a1a6f7 # v0.5.9
         id: simulator
-      - uses: Telosnex/telosnex_ci_tools/actions/ios-flutter-test@4a798518378fb0c362ebe42940227560e6b4ecde # v0.5.8
+      - uses: Telosnex/telosnex_ci_tools/actions/ios-flutter-test@46806695c593ec632eb26996046ea89649a1a6f7 # v0.5.9
         with:
           working-directory: engine_context/dart/example
           target: integration_test/engine_context_test.dart
@@ -127,12 +127,12 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - uses: Telosnex/telosnex_ci_tools/actions/setup-flutter@4a798518378fb0c362ebe42940227560e6b4ecde # v0.5.8
+      - uses: Telosnex/telosnex_ci_tools/actions/setup-flutter@46806695c593ec632eb26996046ea89649a1a6f7 # v0.5.9
       - run: flutter pub get
         working-directory: engine_context/dart
       - run: flutter pub get
         working-directory: engine_context/dart/example
-      - uses: Telosnex/telosnex_ci_tools/actions/android-emulator@4a798518378fb0c362ebe42940227560e6b4ecde # v0.5.8
+      - uses: Telosnex/telosnex_ci_tools/actions/android-emulator@46806695c593ec632eb26996046ea89649a1a6f7 # v0.5.9
         id: emulator
       - name: Example integration tests
         working-directory: engine_context/dart/example
