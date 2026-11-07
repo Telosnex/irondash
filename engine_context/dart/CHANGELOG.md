@@ -1,3 +1,7 @@
+## Unreleased (Telosnex fork)
+
+- Requires `code_assets` 2.2, `hooks` 2.2 and `native_toolchain_rust` 1.0.7. Current `objective_c` and `kiln` need `code_assets` 2.x.
+
 ## 0.6.0-dev.0
 
 - Prepare next minor prerelease.
