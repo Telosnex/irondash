@@ -85,6 +85,14 @@ jobs:
       DEVICE: windows
     steps: *desktop_steps
 
+  desktop-windows-arm64:
+    name: Windows ARM64
+    runs-on: windows-11-arm
+    timeout-minutes: 45
+    env:
+      DEVICE: windows
+    steps: *desktop_steps
+
   ios:
     name: iOS ARM64 simulator
     runs-on: macos-26
