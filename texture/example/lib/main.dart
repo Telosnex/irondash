@@ -3,6 +3,8 @@ import 'dart:ffi';
 import 'dart:isolate';
 import 'dart:io' as io;
 
+// Keep the legacy import for Flutter versions before the Material split.
+// ignore: deprecated_member_use
 import 'package:flutter/material.dart';
 import 'package:irondash_engine_context/irondash_engine_context.dart';
 
